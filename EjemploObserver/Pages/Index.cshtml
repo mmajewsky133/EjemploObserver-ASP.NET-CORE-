@@ -1,0 +1,41 @@
+﻿@page
+@using EjemploObserver.Implementations;
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+
+    CosoQueNotifica cosoQueNotifica = new CosoQueNotifica();
+
+    Martin martin = new Martin(cosoQueNotifica);
+    Octavio octavio = new Octavio(cosoQueNotifica);
+}
+
+<div class="text-center">
+    <h1 class="display-4">Ejemplo de Patron Observer</h1>
+
+</div>
+
+<div id="sujeto">
+    
+    <h2>Notificador</h2>
+ 
+        <form asp-page-handler="Enviar" method="post">
+            <button type="submit" class="btn btn-primary" value="enviar" asp-page-handler="EnviarMensaje">Enviar Mensaje por defecto</button>
+        </form>
+</div>
+<hr>
+<div id="observadores">
+    <h2>Observadores</h2>
+    <div id="observador1">
+        <p id="observador1">Nombre: Octavio</p>
+        <p>Mensaje:</p>
+        <input id="msgOctavio" class="form-control" type="text" placeholder="Las notificacion llegaran aqui..." readonly>
+    </div>
+    <hr>
+    <div id ="observador2">
+        <p id="observador2">Nombre: Martin</p>
+        <p>Mensaje:</p>
+        <input id="msgMartin" class="form-control" type="text" placeholder="Las notificacion llegaran aqui..." readonly>
+    </div>
+</div>
+
